@@ -1,0 +1,27 @@
+{% extends "pages/layout.html" %}
+{% block body %}
+
+<h1 style="color:rgb(14, 157, 102);background-color:rgb(240, 224, 195);">
+    <hr><b><i>Result</i></b>
+<hr></h1>
+<h2><u>Course</u></h2>
+    {% if %}
+        <table>
+            <tr>
+                <th>Subject_Id</th>
+                <th>Subject_Name</th>
+                <th>Credit</th>
+            </tr>
+            {% for subject in  %}
+                <tr>
+                    <td>{{subject.Id }}</td>
+                    <td>{{subject.Name }}</td>
+                    <td>{{subject.Credit}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <h1>*No Course Available.*<h1>
+    {% endif %}
+
+{% endblock %}

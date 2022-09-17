@@ -1,0 +1,41 @@
+{% extends 'pages/layout.html' %}
+{% block body %}
+
+    <h1 style="color:rgb(14, 157, 102);background-color:rgb(240, 224, 195);">
+        <hr><b><i>Interface</i><b>
+    <hr></h1>
+
+    <div>
+        {% if Subjects %}
+            <table>
+                <tr>
+                    <th>Subject_Id</th>
+                    <th>Subject_Name</th>
+                    <th>Credit</th>
+                    <th>remainSeat</th>
+                </tr>
+                {% for subject in Subjects %}
+                <tr>
+                    <td>{{subject.Id }}</td>
+                    <td>{{subject.Name }}</td>
+                    <td>{{subject.Credit}}</td>
+                    <td>{{subject.remainseat}}</td>
+                    {% if subject.seat != 0 %}
+                    <td><form action="{% url 'quota' %}" method="post">
+                        {% csrf_token %}
+                        <button name="subject_id" value="{{ subject.Subject_Id }}" type="Submit">submit</option>
+                    </form></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <h1>*No Course Available.*<h1>
+        {% endif %}
+    </div>
+
+{% endblock %}
+
+    
+
+
