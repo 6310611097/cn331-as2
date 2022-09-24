@@ -4,15 +4,21 @@
 <h1 style="color:rgb(14, 157, 102);background-color:rgb(240, 224, 195);">
     <hr><b><i>Result</i></b>
 <hr></h1>
-<h2><u>Course</u></h2>
-    {% if %}
+<h3 style="color:rgb(19, 79, 134);"><u>Course</u></h3>
+    {% if Courses%}
         <table>
             <tr>
-                <th>Subject_Id</th>
-                <th>Subject_Name</th>
-                <th>Credit</th>
+                <th style="color:rgb(42, 100, 78);">
+                    Subject_Id
+                </th>
+                <th style="color:rgb(42, 100, 78);">
+                    Subject_Name
+                </th>
+                <th style="color:rgb(42, 100, 78);">
+                    Credit
+                </th>
             </tr>
-            {% for subject in  %}
+            {% for subject in Courses %}
                 <tr>
                     <td>{{subject.Id }}</td>
                     <td>{{subject.Name }}</td>
@@ -21,7 +27,7 @@
             {% endfor %}
         </table>
     {% else %}
-        <h1>*No Course Available.*<h1>
+        <h3>*No Course Available.*<h3>
     {% endif %}
 
 {% endblock %}

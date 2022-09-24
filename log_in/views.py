@@ -1,19 +1,28 @@
+from imp import IMP_HOOK
+from multiprocessing import context
+from django.template import loader
 from django.shortcuts import render
-from urllib import request
+from django.http import HttpResponse
 
-from log_in.models import Student
-from log_in.models import Subjects
+from log_in.models import Course
+from log_in.models import Subject
 
 def index(request):
-   return render(request, 'pages/index.html')
+   Subjects = Subject.objects.all() 
+   template = loader.get_template('pages/index.html')
+   context = {'Subjects': Subjects,}
+   return HttpResponse(template.render(context, request))
 
 def quota(request):
-   return render(request, 'pages/quota.html')
+   Courses = Course.objects.all() 
+   template = loader.get_template('pages/quota.html')
+   context = {'Courses': Courses,}
+   return HttpResponse(template.render(context, request))
 
-def quota(request):
+def summit(request):
    if request.method == "POST":
-      sub = Subjects.objects.get(pk=Id)
-      if sub not in Student.courses.all():
+      sub = Subject.objects.get(pk=Id)
+      if sub not in Course.course.all():
          if sub.remainSeat != 0:
-            Subjects.objects.filter().update(remainSeat= sub.remainSeat - 1)
-      Student.course.add(sub)
+            Subject.objects.filter().update(remainSeat= sub.remainSeat - 1)
+      Course.course.add(sub)

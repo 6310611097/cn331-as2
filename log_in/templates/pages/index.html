@@ -1,36 +1,45 @@
 {% extends 'pages/layout.html' %}
 {% block body %}
 
+    <a href="#">Result</a>
     <h1 style="color:rgb(14, 157, 102);background-color:rgb(240, 224, 195);">
         <hr><b><i>Interface</i><b>
     <hr></h1>
 
     <div>
         {% if Subjects %}
-            <table>
+        <table>
                 <tr>
-                    <th>Subject_Id</th>
-                    <th>Subject_Name</th>
-                    <th>Credit</th>
-                    <th>remainSeat</th>
+                    <th style="color:rgb(42, 100, 78);">
+                        Subject_Id
+                    </th>
+                    <th style="color:rgb(42, 100, 78);">
+                        Subject_Name
+                    </th>
+                    <th style="color:rgb(42, 100, 78);">
+                        Credit
+                    </th>
+                    <th style="color:rgb(42, 100, 78);">
+                        remainSeat
+                    </th>
                 </tr>
                 {% for subject in Subjects %}
                 <tr>
                     <td>{{subject.Id }}</td>
                     <td>{{subject.Name }}</td>
                     <td>{{subject.Credit}}</td>
-                    <td>{{subject.remainseat}}</td>
-                    {% if subject.seat != 0 %}
-                    <td><form action="{% url 'quota' %}" method="post">
+                    <td>{{subject.remainSeat}}</td>
+                    {% if subject.remainSeat != 0 %}
+                    <td><form action="{% url 'quota'}" method="POST">
                         {% csrf_token %}
-                        <button name="subject_id" value="{{ subject.Subject_Id }}" type="Submit">submit</option>
+                        <input type="submit" value="sumit" class="form_input">
                     </form></td>
                     {% endif %}
                 </tr>
                 {% endfor %}
             </table>
         {% else %}
-            <h1>*No Course Available.*<h1>
+            <h3>*No Course Available.*<h3>
         {% endif %}
     </div>
 

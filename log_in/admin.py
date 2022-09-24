@@ -1,4 +1,4 @@
 from django.contrib import admin
-from log_in.models import Subjects
+from log_in.models import Subject
 
-admin.site.register(Subjects)
+admin.site.register(Subject)
