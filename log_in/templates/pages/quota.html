@@ -1,6 +1,9 @@
 {% extends "pages/layout.html" %}
 {% block body %}
 
+<div style="text-align: right;">
+    <a href="/home">Back</a> <a href="/">Logout</a>
+</div>
 <h1 style="color:rgb(14, 157, 102);background-color:rgb(240, 224, 195);">
     <hr><b><i>Result</i></b>
 <hr></h1>
@@ -20,9 +23,13 @@
             </tr>
             {% for subject in Courses %}
                 <tr>
-                    <td>{{subject.Id }}</td>
-                    <td>{{subject.Name }}</td>
-                    <td>{{subject.Credit}}</td>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <td>{{subject.Id }}</td>
+                        <td>{{subject.Name }}</td>
+                        <td>{{subject.Credit}}</td>
+                        <td><button type="submit" value= {{subject.Id}} name="cou">delete</button>
+                    </form></td>
                 </tr>
             {% endfor %}
         </table>

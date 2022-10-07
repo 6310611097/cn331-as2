@@ -1,0 +1,26 @@
+{% extends "pages/layout.html" %}
+{% block body %}
+    
+<h1 style="color:rgb(14, 157, 102);background-color:rgb(240, 224, 195);">
+    <hr><b><i>LOG IN</i></b>
+<hr></h1>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="exampleInputEmail1"
+        class="form-label">Username</label>
+        <input type="text" class="form-control" name="username"
+        aria-describedby="emailHelp">
+    </div><br>
+
+    <div class="mb-3">
+        <label for="exampleInputEmail1"
+        class="form-label">Password</label>
+        <input type="password" class="form-control" name="password">
+    </div><br>
+
+    <input type="submit" value="login" class="btn btn-secondary">
+</form>
+
+{% endblock %}

@@ -1,7 +1,9 @@
 {% extends 'pages/layout.html' %}
 {% block body %}
 
-    <a href="#">Result</a>
+    <div style="text-align: right;">
+        <a href="/result">Result</a> <a href="/">Logout</a>
+    </div>
     <h1 style="color:rgb(14, 157, 102);background-color:rgb(240, 224, 195);">
         <hr><b><i>Interface</i><b>
     <hr></h1>
@@ -25,16 +27,16 @@
                 </tr>
                 {% for subject in Subjects %}
                 <tr>
-                    <td>{{subject.Id }}</td>
-                    <td>{{subject.Name }}</td>
-                    <td>{{subject.Credit}}</td>
-                    <td>{{subject.remainSeat}}</td>
-                    {% if subject.remainSeat != 0 %}
-                    <td><form action="{% url 'quota'}" method="POST">
+                    <form action="" method="POST">
                         {% csrf_token %}
-                        <input type="submit" value="sumit" class="form_input">
+                        <td>{{subject.Id }}</td>
+                        <td>{{subject.Name }}</td>
+                        <td>{{subject.Credit}}</td>
+                        <td>{{subject.remainSeat}}</td>
+                        {% if subject.remainSeat != 0 %}
+                                <td><button type="submit" value= {{subject.Id}} name="sub">submit</button>
+                        {% endif %}
                     </form></td>
-                    {% endif %}
                 </tr>
                 {% endfor %}
             </table>
@@ -44,7 +46,3 @@
     </div>
 
 {% endblock %}
-
-    
-
-
